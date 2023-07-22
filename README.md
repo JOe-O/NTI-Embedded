@@ -1,6 +1,5 @@
 # Embedded Software Course Repository
 
-![GitHub](https://img.shields.io/github/license/JOe-O/NTI-Embedded)
 ![GitHub last commit](https://img.shields.io/github/last-commit/JOe-O/NTI-Embedded)
 ![GitHub repo size](https://img.shields.io/github/repo-size/JOe-O/NTI-Embedded)
 
