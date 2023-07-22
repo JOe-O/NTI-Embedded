@@ -24,13 +24,13 @@ In this course, I am learning about the development of embedded software for dif
 
 The repository has the following folder structure:
 
-APP (Application code and projects)
+APP (Application Layer)
 
 MCAL (Microcontroller Abstraction Layer drivers)
 
 HAL (Hardware Abstraction Layer drivers)
 
-LIB (Reusable libraries)
+LIB (Libraries)
 
 ## Usage
 
