@@ -26,8 +26,11 @@ In this course, I am learning about the development of embedded software for dif
 The repository has the following folder structure:
 
 APP (Application code and projects)
+
 MCAL (Microcontroller Abstraction Layer drivers)
+
 HAL (Hardware Abstraction Layer drivers)
+
 LIB (Reusable libraries)
 
 ## Usage
@@ -46,4 +49,5 @@ Contributions to this repository are welcome. If you find any issues or have sug
 If you need any further assistance or have questions regarding the course or the repository, feel free to contact me:
 
 Email: yousefosama789@gmail.com
+
 NTI Supervisor: Engineer Ahmed Attia - github.com/AhmedAtiaAtia
