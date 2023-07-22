@@ -39,7 +39,7 @@ LIB (Libraries)
 ```bash
 git clone https://github.com/JOe-O/NTI-Embedded.git
 ```
-2. Navigate to the relevant folders ('APP', 'MCAL', 'HAL', or 'LIB') to access the corresponding code, drivers, and libraries  and run the applications on your chosen hardware board.
+2. Navigate to the relevant folders ('APP', 'MCAL', 'HAL', or 'LIB') to access the corresponding code, drivers, and libraries  and run the applications on your ATMEGA32 board.
 
 ## Contributing
 Contributions to this repository are welcome. If you find any issues or have suggestions for improvements, please feel free to open an issue or create a pull request.
