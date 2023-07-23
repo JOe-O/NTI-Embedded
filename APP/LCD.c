@@ -17,8 +17,10 @@ int main(void)
 {
 	LCD_voidInit();
 
-	LCD_voidSendCommand(0x80);
-	while(1){
+	//LCD_voidSendCommand(0x80);
+	LCD_voidGoTo(0,3);
+	while(1)
+	{
 
 //		LCD_voidWriteData('G');
 //		_delay_ms(200);

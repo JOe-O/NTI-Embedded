@@ -23,7 +23,7 @@ void LCD_voidSendCommand(u8 Copy_Command);
 
 void LCD_voidInit();
 
-
+void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column);
 
 
 #endif /* LCD_LCD_INT_H_ */

@@ -144,7 +144,7 @@ void LCD_voidInit()
 //		_delay_ms(5);
 		//DIO_voidSetPinValue(CONTROL_PORT,EN_PIN,DIO_u8LOW);
 
-		_delay_ms(500);
+		_delay_ms(100);
 
 		LCD_voidSendCommand(0x02);
 		_delay_ms(1);
@@ -169,4 +169,34 @@ void LCD_voidWriteString(u8 * Copy_Text)
 		LCD_voidWriteData(Copy_Text[i]);
 
 	}
+
+
+void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column)
+{
+	if((Copy_Column >= 0) && (Copy_Column <= 15))
+	{
+		switch(Copy_Row)
+		{
+		case 0:
+			LCD_voidSendCommand((0x80)+Copy_Column);
+			break;
+		case 1:
+			LCD_voidSendCommand((0xC0)+Copy_Column);
+			break;
+		case 2:
+			LCD_voidSendCommand((0x90)+Copy_Column);
+			break;
+		case 3:
+			LCD_voidSendCommand((0xD0)+Copy_Column);
+			break;
+		default:
+			//wrong row entry
+			break;
+
+		}
+	}
+
+}
+
+
 }
