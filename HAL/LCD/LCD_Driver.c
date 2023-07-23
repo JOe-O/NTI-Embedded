@@ -13,6 +13,8 @@
 #include "LCD_int.h"
 #include "LCD_Config.h"
 
+#include <stdio.h>
+
 void LCD_voidWriteData(u8 Copy_Data)
 {
 	if(LCD_MODE == MODE_8)
@@ -170,6 +172,7 @@ void LCD_voidWriteString(u8 * Copy_Text)
 
 	}
 
+}
 
 void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column)
 {
@@ -199,4 +202,11 @@ void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column)
 }
 
 
+void LCD_voidWriteNumber(u32 Copy_Number)
+{
+    u8 output[50];
+
+    sprintf(output, "%lu", Copy_Number); // Use %lu for unsigned long (u32)
+
+    LCD_voidWriteString(output);
 }

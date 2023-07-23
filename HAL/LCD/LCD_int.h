@@ -25,5 +25,7 @@ void LCD_voidInit();
 
 void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column);
 
+void LCD_voidWriteNumber(u32 Copy_Number);
+
 
 #endif /* LCD_LCD_INT_H_ */

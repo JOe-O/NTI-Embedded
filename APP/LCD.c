@@ -18,7 +18,7 @@ int main(void)
 	LCD_voidInit();
 
 	//LCD_voidSendCommand(0x80);
-	LCD_voidGoTo(0,3);
+
 	while(1)
 	{
 
@@ -26,11 +26,15 @@ int main(void)
 //		_delay_ms(200);
 //		LCD_voidSendCommand(LCD_u8CLEAR_DISPLAY);
 
+		LCD_voidGoTo(3,3);
 
-		LCD_voidWriteData('T');
-		LCD_voidWriteString("Hello");
-		_delay_ms(200);
-		LCD_voidSendCommand(LCD_u8CLEAR_DISPLAY);
+
+//		LCD_voidWriteData('T');
+//		LCD_voidWriteString((u8 *)"Hello");
+//		_delay_ms(200);
+//		LCD_voidSendCommand(LCD_u8CLEAR_DISPLAY);
+
+		LCD_voidWriteNumber(505500);
 
 	}
 
