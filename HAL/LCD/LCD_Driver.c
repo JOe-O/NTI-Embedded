@@ -12,6 +12,7 @@
 #include <util/delay.h>
 #include "LCD_int.h"
 #include "LCD_Config.h"
+#include <string.h>
 
 #include <stdio.h>
 
@@ -209,4 +210,7 @@ void LCD_voidWriteNumber(u32 Copy_Number)
     sprintf(output, "%lu", Copy_Number); // Use %lu for unsigned long (u32)
 
     LCD_voidWriteString(output);
+
+    memset(output, '\0', sizeof(output));
 }
+
