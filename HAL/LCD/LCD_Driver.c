@@ -188,7 +188,7 @@ void LCD_voidGoTo(u8 Copy_Row, u8 Copy_Column)
 			LCD_voidSendCommand((0xC0)+Copy_Column);
 			break;
 		case 2:
-			LCD_voidSendCommand((0x90)+Copy_Column);
+			LCD_voidSendCommand((0x90)+Copy_Column); //94
 			break;
 		case 3:
 			LCD_voidSendCommand((0xD0)+Copy_Column);
@@ -213,4 +213,20 @@ void LCD_voidWriteNumber(u32 Copy_Number)
 
     memset(output, '\0', sizeof(output));
 }
+
+
+void LCD_voidCustomChar(u8 Copy_loc, u8 * character)
+{
+    u8 i;
+
+    if(Copy_loc<8)
+    {
+    	LCD_voidSendCommand(0x40 + (Copy_loc*8));  /* Command 0x40 and onwards forces
+                                       the device to point CGRAM address */
+       for(i=0;i<8;i++)  /* Write 8 byte for generation of 1 character */
+    	   LCD_voidWriteData(character[i]);
+    }
+}
+
+
 

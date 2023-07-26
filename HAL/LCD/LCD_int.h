@@ -29,4 +29,8 @@ void LCD_voidWriteNumber(u32 Copy_Number);
 
 u8   LCD_u8GetNumber(u8 Copy_Num);
 
+void LCD_voidCustomChar(u8 Copy_loc, u8 * character);
+
+
+
 #endif /* LCD_LCD_INT_H_ */
