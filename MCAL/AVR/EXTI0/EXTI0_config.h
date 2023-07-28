@@ -4,6 +4,6 @@
 
 
 
-#define		SENSE_MODE		EXTI0_RISING
+#define		SENSE_MODE		EXTI0_FALLING
 
 #endif

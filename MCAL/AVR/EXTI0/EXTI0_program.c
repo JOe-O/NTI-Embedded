@@ -52,7 +52,6 @@ void EXTI0_voidDisable(void)
 void (*ext_pf)(void) = NULL;
 
 void __vector_2(void)
-
 {
 	ext_pf();
 
