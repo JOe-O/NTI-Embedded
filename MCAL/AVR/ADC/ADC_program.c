@@ -32,24 +32,91 @@ void ADC_voidInit (void)
 	SET_BIT(ADCSRA,1);
 	SET_BIT(ADCSRA,2);
 
+#if VOLTAGE_REFERENCE == AVCC
 	//reference voltage as AVCC with external capacitor
 	SET_BIT(ADMUX,6);
 	CLR_BIT(ADMUX,7);
+#elif VOLTAGE_REFERENCE == AREF
+	CLR_BIT(ADMUX,6);
+	CLR_BIT(ADMUX,7);
 
+#elif VOLTAGE_REFERENCE == RESERVED
+	CLR_BIT(ADMUX,6);
+	SET_BIT(ADMUX,7);
+#elif VOLTAGE_REFERENCE == INTERNAL
+	SET_BIT(ADMUX,6);
+	SET_BIT(ADMUX,7);
+#endif
+
+#if ADJUSTMENT == RIGHT_ADJUSTMENT
 	//right adjusted
 	CLR_BIT(ADMUX,5);
+#elif ADJUSTMENT == LEFT_ADJUSTMENT
+	//right adjusted
+	SET_BIT(ADMUX,5);
+#endif
 
+#if ADC_CHANNEL_NUMBER == DIO_U8_PIN_1
 	//setting adc channel as ADC1
-	SET_BIT(ADMUX,0);
-	CLR_BIT(ADMUX,1);
-	CLR_BIT(ADMUX,2);
-	CLR_BIT(ADMUX,3);
-	CLR_BIT(ADMUX,4);
+	SET_BIT(ADMUX,0);		//1
+	CLR_BIT(ADMUX,1);		//2
+	CLR_BIT(ADMUX,2);		//4
+	CLR_BIT(ADMUX,3);		//8
+	CLR_BIT(ADMUX,4);		//16
 
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_0
+	//setting adc channel as ADC0
+	CLR_BIT(ADMUX,0);       //1
+	CLR_BIT(ADMUX,1);       //2
+	CLR_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
 
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_2
+	//setting adc channel as ADC2
+	CLR_BIT(ADMUX,0);       //1
+	SET_BIT(ADMUX,1);       //2
+	CLR_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_3
+	//setting adc channel as ADC2
+	SET_BIT(ADMUX,0);       //1
+	SET_BIT(ADMUX,1);       //2
+	CLR_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_4
+	//setting adc channel as ADC2
+	CLR_BIT(ADMUX,0);       //1
+	CLR_BIT(ADMUX,1);       //2
+	SET_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_5
+	//setting adc channel as ADC2
+	SET_BIT(ADMUX,0);       //1
+	CLR_BIT(ADMUX,1);       //2
+	SET_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_6
+	//setting adc channel as ADC2
+	CLR_BIT(ADMUX,0);       //1
+	SET_BIT(ADMUX,1);       //2
+	SET_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#elif ADC_CHANNEL_NUMBER == DIO_U8_PIN_7
+	//setting adc channel as ADC2
+	SET_BIT(ADMUX,0);       //1
+	SET_BIT(ADMUX,1);       //2
+	SET_BIT(ADMUX,2);       //4
+	CLR_BIT(ADMUX,3);       //8
+	CLR_BIT(ADMUX,4);       //16
+#endif
 
 }
-
 
 
 void ADC_voidEnable()

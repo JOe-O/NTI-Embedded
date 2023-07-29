@@ -30,7 +30,7 @@
 /*				is RIGHT_ADJUSTMENT								*/
 /****************************************************************/
 
-#define ADJUSTMENT				LEFT_ADJUSTMENT
+#define ADJUSTMENT				RIGHT_ADJUSTMENT
 
 
 /****************************************************************/
@@ -42,6 +42,7 @@
 /****************************************************************/
 
 #define ADC_CHANNEL_NUMBER		DIO_U8_PIN_1
+
 
 /****************************************************************/
 /** !comment : Please Enter the Voltage Reference				*/

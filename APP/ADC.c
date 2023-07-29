@@ -31,7 +31,7 @@ int main(void)
 	{
 		value = ADC_u16ReadADCInMV();
 		LCD_voidWriteNumber(value);
-		_delay_ms(300);
+		_delay_ms(150);
 		LCD_voidSendCommand(LCD_u8CLEAR_DISPLAY);
 
 
