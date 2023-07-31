@@ -26,16 +26,29 @@ void ADC_voidInit (void)
 
 	//clearning adc interrupt enable
 	CLR_BIT(ADCSRA,3);
-
+#if ADC_PRESCALLER == DIVID_BY_128
 	//setting prescalar to 128
 	SET_BIT(ADCSRA,0);
 	SET_BIT(ADCSRA,1);
 	SET_BIT(ADCSRA,2);
 
+#elif ADC_PRESCALLER == DIVID_BY_64
+	//setting prescalar to 64
+	CLR_BIT(ADCSRA,0);
+	SET_BIT(ADCSRA,1);
+	SET_BIT(ADCSRA,2);
+#elif ADC_PRESCALLER == DIVID_BY_32
+	//setting prescalar to 32
+	SET_BIT(ADCSRA,0);
+	CLR_BIT(ADCSRA,1);
+	SET_BIT(ADCSRA,2);
+#endif
+
 #if VOLTAGE_REFERENCE == AVCC
 	//reference voltage as AVCC with external capacitor
 	SET_BIT(ADMUX,6);
 	CLR_BIT(ADMUX,7);
+
 #elif VOLTAGE_REFERENCE == AREF
 	CLR_BIT(ADMUX,6);
 	CLR_BIT(ADMUX,7);
@@ -51,6 +64,7 @@ void ADC_voidInit (void)
 #if ADJUSTMENT == RIGHT_ADJUSTMENT
 	//right adjusted
 	CLR_BIT(ADMUX,5);
+
 #elif ADJUSTMENT == LEFT_ADJUSTMENT
 	//right adjusted
 	SET_BIT(ADMUX,5);
@@ -139,11 +153,12 @@ void ADC_voidDisable()
 	//disable adc
 	CLR_BIT(ADCSRA,7);
 }
+u16 (*ext_pf2)(void) = '\0';
 
-
-u8 ADC_u8ReadADC(pf addresscpy)
+u16 ADC_u8ReadADC(u16 (*pf)(void))//pf addresscpy
 {
-
+	ext_pf2 = pf;
+	return ext_pf2();
 }
 
 

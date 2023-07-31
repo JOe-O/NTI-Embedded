@@ -62,7 +62,7 @@
 /*							    			INTERNAL			*/	
 /****************************************************************/
 
-#define ADC_PRESCALLER				DIVID_BY_64
+#define ADC_PRESCALLER				DIVID_BY_128
 
 
 

@@ -10,7 +10,7 @@
 /****************************************************************/	
 /** !comment : Sense Mode Definition					   		*/
 /****************************************************************/
-typedef void (*pf)(void);
+typedef u16 (*pf)(void);
 
 #define AVCC 					5
 #define AREF 					4
@@ -100,7 +100,7 @@ void ADC_voidDisable();
 /* Pre_condition  :  this function must be used after Interrupt */
 /*     				 initialized 							    */
 /****************************************************************/
-u8 ADC_u8ReadADC(pf addresscpy);
+u16 ADC_u8ReadADC(pf addresscpy);
 
 
 
