@@ -30,20 +30,62 @@
 
 #include "util/delay.h"
 
+u8 string[10] = "hhhh lol";
+u8 index = 0;
+u8 data;
+void ISR_TX(void)
+{
+	//LCD_voidWriteData("done");
+	if(string[index] != '\0')
+	{
+		//USART_INTTransmit(string[index]);
+		LCD_voidWriteData(string[index]);
+		USART_INTTransmit(string);
+		index++;
+	}
+
+}
+void ISR_RX(void)
+{
+	//LCD_voidWriteString("hi");
+	u8 local = 0;
+
+	local = UDR;
+
+	USART_Transmit(local);
+
+	LCD_voidWriteData(local);
+
+
+}
+
 
 int main(void)
 {
-
+	GIE_voidEnable();
 	USART_Init();
 	LCD_voidInit();
 
-	u8 data;
+	USART_INTReceive();
+
+
+	//USART_TXSetCallBack(ISR_TX);
+	USART_RXSetCallBack(ISR_RX);
+	//USART_INTTransmit(string);
+
+
+
 
 	while(1)
 	{
-		data = USART_Receive();
-		USART_Transmit(data);
-		LCD_voidWriteData(data);
+
+		//data = USART_Receive();
+		//USART_Transmit(data);
+		//LCD_voidWriteData(data);
+
+//		data = USART_Receive();
+//		USART_Transmit(data);
+//		LCD_voidWriteData(data);
 
 	}
 

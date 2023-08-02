@@ -51,9 +51,6 @@ void USART_Init( )
 		SET_BIT(UCSRB,4);
 
 
-
-
-
 }
 
 
@@ -74,6 +71,36 @@ void USART_Transmit( u8 data )
 
 }
 
+void (*ext_pf_TX)(void) = '\0';
+
+void __vector_15(void)
+{
+	ext_pf_TX();
+
+}
+
+void USART_TXSetCallBack(void (*pf)(void))
+{
+	ext_pf_TX = pf;
+
+
+}
+
+u8 index_TX = 0;
+
+void USART_INTTransmit( u8 * data )
+{
+	//enabling tx complete interrupt enable
+	SET_BIT(UCSRB,6);
+
+	//while(GET_BIT(UCSRA,5) == 0);
+	UDR = data[index_TX];
+	index_TX++;
+
+}
+
+
+
 /****************************************************************/
 /* Description    : This function used to Receive Data			*/ 
 /*																*/
@@ -91,4 +118,24 @@ u8 USART_Receive( )
 	CLR_BIT(UCSRA,7);
 	return Local_u8Result;
 }
+void USART_INTReceive()
+{
+	//enabling rx complete interrupt enable
+	SET_BIT(UCSRB,7);
 
+
+}
+
+void (*ext_pf_RX)(void) = '\0';
+
+void __vector_13(void)
+{
+	ext_pf_RX();
+
+}
+
+
+void USART_RXSetCallBack(void (*pf)(void))
+{
+	ext_pf_RX = pf;
+}

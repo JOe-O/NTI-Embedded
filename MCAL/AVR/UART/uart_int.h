@@ -33,7 +33,9 @@ void USART_Init( );
 /****************************************************************/
 void USART_Transmit( u8 data );
 
+void USART_INTTransmit( u8 * data );
 
+void USART_TXSetCallBack(void (*pf)(void));
 /****************************************************************/
 /* Description    : This function used to Receive Data			*/ 
 /*																*/
@@ -45,5 +47,7 @@ void USART_Transmit( u8 data );
 /****************************************************************/
 u8 USART_Receive( );
 
+void USART_INTReceive();
 
+void USART_RXSetCallBack(void (*pf)(void));
 #endif	/** !comment  :  End of guard                          **/

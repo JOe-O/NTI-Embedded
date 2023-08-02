@@ -67,4 +67,9 @@
 #define UDR			*((volatile u8 * ) (0X2C))
 
 
+//vector for USART,TX Complete
+void __vector_15(void) __attribute__((signal , used));
+//vector for USART,RX Complete
+void __vector_13(void) __attribute__((signal , used));
+
 #endif	/**!comment : End of the guard [_USART_PRIV_H]		   **/
