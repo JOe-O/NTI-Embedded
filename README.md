@@ -26,11 +26,12 @@ The repository has the following folder structure:
 
 APP (Application Layer)
 
-MCAL (Microcontroller Abstraction Layer drivers)
-
 HAL (Hardware Abstraction Layer drivers)
 
 LIB (Libraries)
+
+MCAL (Microcontroller Abstraction Layer drivers)
+
 
 ## Usage
 
