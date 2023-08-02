@@ -36,6 +36,7 @@ u8 data;
 void ISR_TX(void)
 {
 	//LCD_voidWriteData("done");
+
 	if(string[index] != '\0')
 	{
 		//USART_INTTransmit(string[index]);
