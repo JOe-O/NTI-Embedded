@@ -29,6 +29,10 @@
 #define DDRD_REG        *((volatile u8*)(0x31))
 #define PIND_REG        *((volatile u8*)(0x30))
 
-
+//TIMER REGISTERS
+#define TCCR0_REG    (*((volatile u8*)(0x53)))
+#define TCNT0_REG    (*((volatile u8*)(0x52)))
+#define OCR0_REG     (*((volatile u8*)(0x5C)))
+#define TIMSK_REG    (*((volatile u8*)(0x59)))
 
 #endif /* ATMEGA32_REGESTERS_H_ */
