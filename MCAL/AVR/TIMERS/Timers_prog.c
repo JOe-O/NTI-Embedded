@@ -36,35 +36,93 @@ void GPT_vidInit()
 
 #endif
 
-#if CLK_MODE == RISING_EDGE
-//	//CLK on Rising edge
-//	SET_BIT(TCCR0_REG,0);
-//	SET_BIT(TCCR0_REG,1);
-//	SET_BIT(TCCR0_REG,2);
-#endif
 
-CLR_BIT(TCCR0_REG,5);
-SET_BIT(TCCR0_REG,4);
 
-OCR0_REG = 200;
+	CLR_BIT(TCCR0_REG,5);
+	SET_BIT(TCCR0_REG,4);
+
+
+}
+
+void GPT_vidSetCompareValue(u8 Copy_Value)
+{
+	OCR0_REG = Copy_Value;
 }
 
 void GPT_vidStartTimer(){
 
-	//8 prescaler
-	CLR_BIT(TCCR0_REG,0);
-	SET_BIT(TCCR0_REG,1);
-	CLR_BIT(TCCR0_REG,2);
+	#if CLK_MODE == GPT_DIV_BY_8
 
+		CLR_BIT(TCCR0_REG,0);
+		SET_BIT(TCCR0_REG,1);
+		CLR_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_NO_CLK
 
+		CLR_BIT(TCCR0_REG,0);
+		CLR_BIT(TCCR0_REG,1);
+		CLR_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_DIV_BY_1
+
+		SET_BIT(TCCR0_REG,0);
+		CLR_BIT(TCCR0_REG,1);
+		CLR_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_DIV_BY_64
+
+		SET_BIT(TCCR0_REG,0);
+		SET_BIT(TCCR0_REG,1);
+		CLR_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_DIV_BY_256
+
+		CLR_BIT(TCCR0_REG,0);
+		CLR_BIT(TCCR0_REG,1);
+		SET_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_DIV_BY_1024
+
+		SET_BIT(TCCR0_REG,0);
+		CLR_BIT(TCCR0_REG,1);
+		SET_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_RISING_EDGE
+
+		SET_BIT(TCCR0_REG,0);
+		SET_BIT(TCCR0_REG,1);
+		SET_BIT(TCCR0_REG,2);
+	#elif CLK_MODE == GPT_FALLING_EDGE
+
+		CLR_BIT(TCCR0_REG,0);
+		SET_BIT(TCCR0_REG,1);
+		SET_BIT(TCCR0_REG,2);
+	#endif
+
+#if OC0_MODE == OC0_DISCONNECTED
+		CLR_BIT(TCCR0_REG,4);
+		CLR_BIT(TCCR0_REG,5);
+
+#elif OC0_MODE == OC0_TGL
+		SET_BIT(TCCR0_REG,4);
+		CLR_BIT(TCCR0_REG,5);
+
+#elif OC0_MODE == OC0_CLEAR
+		CLR_BIT(TCCR0_REG,4);
+		SET_BIT(TCCR0_REG,5);
+
+#elif OC0_MODE == OC0_SET
+		SET_BIT(TCCR0_REG,4);
+		SET_BIT(TCCR0_REG,5);
+
+#endif
+}
+
+void GPT_vidOverflowInterruptEn()
+{
 	//enable overflow interrupt
-	//SET_BIT(TIMSK_REG,0);
-
+	SET_BIT(TIMSK_REG,0);
+}
+void GPT_vidCompareMatchInterruptEn()
+{
 	//enable compare match interrupt
 	SET_BIT(TIMSK_REG,1);
-
-
 }
+
 
 u16 delay_s(u16 Copy_Time)
 {

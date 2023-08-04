@@ -97,6 +97,7 @@ int main(void)
 	GIE_voidEnable();
 	LCD_voidInit();
 	GPT_vidInit();
+	GPT_vidSetCompareValue(200);
 	GPT_vidStartTimer();
 
 	Number_of_OVFS = delay_s(1);
