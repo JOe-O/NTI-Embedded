@@ -31,9 +31,9 @@
 
 
 
-#define GPT_MODE		CTC
+#define GPT_MODE		FAST_PWM
 #define CLK_MODE		GPT_DIV_BY_8
-#define OC0_MODE		OC0_TGL
+#define OC0_MODE		OC0_TGLL
 
 
 

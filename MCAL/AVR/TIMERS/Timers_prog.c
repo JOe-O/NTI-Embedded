@@ -29,21 +29,25 @@ void GPT_vidInit()
 	TCCR0_REG.Bits.BIT_6 = 0;
 #elif GPT_MODE == PHASE_CORRECT
 	//PHASE CORRECT MODE
-	CLR_BIT(TCCR0_REG,3);
-	SET_BIT(TCCR0_REG,6);
+	//CLR_BIT(TCCR0_REG,3);
+	TCCR0_REG.Bits.BIT_3 = 0;
+	//SET_BIT(TCCR0_REG,6);
+	TCCR0_REG.Bits.BIT_6 = 1;
 #elif GPT_MODE == FAST_PWM
 	//PHASE CORRECT MODE
-	SET_BIT(TCCR0_REG,3);
-	SET_BIT(TCCR0_REG,6);
+	//SET_BIT(TCCR0_REG,3);
+	TCCR0_REG.Bits.BIT_3 = 1;
+	//SET_BIT(TCCR0_REG,6);
+	TCCR0_REG.Bits.BIT_6 = 1;
 
 #endif
 
 
 
 	//CLR_BIT(TCCR0_REG,5);
-	TCCR0_REG.Bits.BIT_5 = 0;
+	TCCR0_REG.Bits.BIT_5 = 1;
 	//SET_BIT(TCCR0_REG,4);
-	TCCR0_REG.Bits.BIT_4 = 1;
+	TCCR0_REG.Bits.BIT_4 = 0;
 
 
 }
@@ -100,25 +104,25 @@ void GPT_vidStartTimer(){
 		SET_BIT(TCCR0_REG,2);
 	#endif
 
-#if OC0_MODE == OC0_DISCONNECTED
-		CLR_BIT(TCCR0_REG,4);
-		CLR_BIT(TCCR0_REG,5);
-
-#elif OC0_MODE == OC0_TGL
-		//SET_BIT(TCCR0_REG,4);
-		TCCR0_REG.Bits.BIT_4 = 1;
-		//CLR_BIT(TCCR0_REG,5);
-		TCCR0_REG.Bits.BIT_5 = 0;
-
-#elif OC0_MODE == OC0_CLEAR
-		CLR_BIT(TCCR0_REG,4);
-		SET_BIT(TCCR0_REG,5);
-
-#elif OC0_MODE == OC0_SET
-		SET_BIT(TCCR0_REG,4);
-		SET_BIT(TCCR0_REG,5);
-
-#endif
+//#if OC0_MODE == OC0_DISCONNECTED
+//		CLR_BIT(TCCR0_REG,4);
+//		CLR_BIT(TCCR0_REG,5);
+//
+//#elif OC0_MODE == OC0_TGL
+//		//SET_BIT(TCCR0_REG,4);
+//		TCCR0_REG.Bits.BIT_4 = 1;
+//		//CLR_BIT(TCCR0_REG,5);
+//		TCCR0_REG.Bits.BIT_5 = 0;
+//
+//#elif OC0_MODE == OC0_CLEAR
+//		CLR_BIT(TCCR0_REG,4);
+//		SET_BIT(TCCR0_REG,5);
+//
+//#elif OC0_MODE == OC0_SET
+//		SET_BIT(TCCR0_REG,4);
+//		SET_BIT(TCCR0_REG,5);
+//
+//#endif
 }
 
 void GPT_vidOverflowInterruptEn()
