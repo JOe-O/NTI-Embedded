@@ -15,11 +15,11 @@
 
 #include "I2C_int.h"
 
-void I2C_vidInit(void)
+void I2C_vidInit(u8 Copy_u8SLA)
 {
 	//TWI initialization
 	//Bit rate: 100 kHz for 16MHz cpu clock
-	TWBR_REG.Whole_Register = 72;
+	TWBR_REG.Whole_Register = 2;
 	//setting prescaler to 1
 	TWSR_REG.Whole_Register &= 0xFC;
 	//enable TWI
@@ -27,7 +27,8 @@ void I2C_vidInit(void)
 
 	//Two wire bus slave address: 0x01
 	//general call recognition: off
-	TWAR_REG.Whole_Register = 0x02;
+	TWAR_REG.Whole_Register = Copy_u8SLA<<1;
+	TWAR_REG.Bits.BIT_0 = 0;
 
 	//generate acknowledge pulse: On
 	//TWI interrupt: off

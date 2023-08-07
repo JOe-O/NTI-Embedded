@@ -9,7 +9,7 @@
 #define LCD_LCD_CONFIG_H_
 
 
-#define CONTROL_PORT					PORTC
+#define CONTROL_PORT					PORTD
 #define DATA_PORT						PORTB
 
 #define RS_PIN							DIO_u8PIN_0

@@ -35,7 +35,7 @@
 #define NACK        1
 
 
-void I2C_vidInit(void);
+void I2C_vidInit(u8 Copy_u8SLA);
 void I2C_vidSendStart(void);
 void I2C_vidSendStop(void);
 void I2C_vidSendSLA(u8 Copy_u8SLA,u8 R_W);
