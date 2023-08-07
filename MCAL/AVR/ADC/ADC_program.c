@@ -178,10 +178,10 @@ void ADC_voidAutoTrigger()
 u16 ADC_u16ReadADCInMV()
 {
 
-u16 value = 0;
+u16 value;
 ADC_voidStartConversion();
 
-while(!GET_BIT(ADCSRA,4));
+while(GET_BIT(ADCSRA,4) != 1);
 value = ADC_u16_ADCL_REG;
 SET_BIT(ADCSRA,4);
 return value;

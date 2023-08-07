@@ -27,17 +27,37 @@
 //int main(void){
 //	DIO_voidSetPinDirection(PORTD,DIO_u8PIN_5,DIO_u8OUTPUT);
 //
-//	//ADC_voidInit();
+//	LCD_voidInit();
 //
 //	PWM_vidPwmInit(TIMER_1);
 //
-//	PWM_vidSetPwmDutyCycle(TIMER_1,50);
 //	PWM_StartTimer(TIMER_1);
 //
+//	LCD_voidWriteString("Duty Cycle: ");
 //
 //
 //	while(1)
 //	{
+//
+//		for(int i = 0 ; i <= 100 ; i++)
+//		{
+//			PWM_vidSetPwmDutyCycle(TIMER_1,i);
+//			LCD_voidGoTo(0,12);
+//			LCD_voidWriteNumber(i);
+//			LCD_voidWriteString("   ");
+//			_delay_ms(10);
+//
+//		}
+//		for(int i = 100 ; i >= 0 ; i--)
+//		{
+//			PWM_vidSetPwmDutyCycle(TIMER_1,i);
+//			LCD_voidGoTo(0,12);
+//			LCD_voidWriteNumber(i);
+//			LCD_voidWriteString("   ");
+//			_delay_ms(10);
+//
+//		}
+//
 //
 //	}
 //

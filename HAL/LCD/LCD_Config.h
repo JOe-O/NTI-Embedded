@@ -10,7 +10,7 @@
 
 
 #define CONTROL_PORT					PORTC
-#define DATA_PORT						PORTA
+#define DATA_PORT						PORTB
 
 #define RS_PIN							DIO_u8PIN_0
 #define RW_PIN							DIO_u8PIN_1

@@ -29,13 +29,13 @@ typedef union{
 
 
 /*DIO A*/
-#define PORTA_REG	*((volatile u8*)(0x3B))
-#define DDRA_REG	*((volatile u8*)(0x3A))
+#define PORTA_REG		*((volatile u8*)(0x3B))
+#define DDRA_REG		*((volatile u8*)(0x3A))
 #define PINA_REG        *((volatile u8*)(0x39))
 
 /*DIO B*/
 #define PORTB_REG       *((volatile u8*)(0x38))
-#define DDRB_REG	*((volatile u8*)(0x37))
+#define DDRB_REG		*((volatile u8*)(0x37))
 #define PINB_REG        *((volatile u8*)(0x36))
 
 /*DIO C*/
@@ -64,5 +64,14 @@ typedef union{
 #define OCR1A_REG        (*((volatile u16*)(0x4A)))
 #define OCR1B_REG        (*((volatile u16*)(0x48)))
 #define ICR1_REG         (*((volatile u16*)(0x46)))
+
+
+//I2C REGISTERS
+#define TWDR_REG         (*((volatile tuniReg*)(0x23)))
+#define TWAR_REG         (*((volatile tuniReg*)(0x22)))
+#define TWSR_REG         (*((volatile tuniReg*)(0x21)))
+#define TWBR_REG         (*((volatile tuniReg*)(0x20)))
+#define TWCR_REG         (*((volatile tuniReg*)(0x56)))
+
 
 #endif /* ATMEGA32_REGESTERS_H_ */

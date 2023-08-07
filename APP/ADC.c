@@ -50,8 +50,8 @@
 //
 //	while(1)
 //	{
-//		//value = ADC_u16ReadADCInMV();
-//		value = ADC_u8ReadADC(ADC_u16Read);
+//		value = ADC_u16ReadADCInMV();
+//		//value = ADC_u8ReadADC(ADC_u16Read);
 //		value = ((u16)((((u32)value)*5000)/1024));
 //		temp = value/10;
 //
