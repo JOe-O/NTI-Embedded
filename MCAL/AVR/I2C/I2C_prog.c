@@ -37,8 +37,6 @@ void I2C_vidInit(u8 Copy_u8SLA)
 
 
 
-
-
 }
 void I2C_vidSendStart(void)
 {
@@ -58,15 +56,21 @@ void I2C_vidSendStop(void)
 
 
 }
-void I2C_vidSendSLA(u8 Copy_u8SLA,u8 R_W)
+void I2C_vidSendSLA(u8 Copy_u8SLA)
 {
-	//put data on TWI Register
-	TWDR_REG.Whole_Register = Copy_u8SLA<<1;
-	TWDR_REG.Bits.BIT_0 =R_W;
-	//send data
-	TWCR_REG.Whole_Register = (1<<7) | (1<<2);
+//	//put data on TWI Register
+//	TWDR_REG.Whole_Register = Copy_u8SLA<<1;
+//	TWDR_REG.Bits.BIT_0 =R_W;
+//	//send data
+//	TWCR_REG.Whole_Register = (1<<7) | (1<<2);
+//
+//	//wait for TWINT flag set in TWCR Register
+//	while(TWCR_REG.Bits.BIT_7 == 0);
 
-	//wait for TWINT flag set in TWCR Register
+	TWDR_REG.Whole_Register = Copy_u8SLA;
+	//Send Data
+	TWCR_REG.Whole_Register = (1<<7) | (1<<2);
+	//Wait for TWINT flag set in TWCR register
 	while(TWCR_REG.Bits.BIT_7 == 0);
 
 
